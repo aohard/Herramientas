@@ -15,7 +15,9 @@
     z-index: 1000; /* Asegurarse de que aparezca por encima de otros elementos */
     max-width: 300px; /* Limitar el ancho del cuadro de descripción */
     max-height: 400px;
+    box-sizing: border-box;
 }
+
 
 /* Alinear las descripciones en diferentes posiciones según las necesidades */
 #description1 {
@@ -45,14 +47,25 @@
     object-fit: cover; /* Mantener la imagen dentro de estas dimensiones */
 }
 
-/* Hacer que la última descripción use dos columnas con flexbox */
+/* Flexbox para organizar las columnas dentro de #description3 */
 .description-columns {
-    display: flex; /* Crear un layout flexible */
-    gap: 20px; /* Espaciado entre columnas */
+    display: flex;        /* Usar Flexbox para organizar las columnas */
+    gap: 20px;            /* Espaciado entre las columnas */
+    justify-content: space-between;  /* Asegurar que las columnas se distribuyan bien */
+    max-width: 500px;     /* Limitar el ancho total del contenedor */
+    box-sizing: border-box; /* Incluir el padding dentro del tamaño de los elementos */
+    padding: 10px;        /* Espaciado interno */
 }
 
-/* Estilos para las columnas */
+/* Cada columna tiene la mitad del ancho disponible */
 .column {
-    flex: 1; /* Hacer que cada columna ocupe el mismo espacio */
-    padding: 10px;
+    flex: 1;              /* Hacer que cada columna ocupe el mismo ancho */
+    padding: 10px;        /* Espacio interno alrededor del contenido */
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .description-columns {
+        flex-direction: column; /* En pantallas pequeñas, apilar las columnas una debajo de la otra */
+    }
 }

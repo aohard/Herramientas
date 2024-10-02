@@ -1,0 +1,58 @@
+/* Asegurarse de que el contenedor sea relativo para posicionar bien las descripciones */
+.container-relative {
+    position: relative;
+}
+
+/* Estilo para las descripciones */
+.description {
+    display: none; /* Ocultarlas inicialmente */
+    position: fixed; /* Hacer que las descripciones se posicionen respecto a la ventana */
+    color: white; /* Texto blanco */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo gris oscuro con transparencia */
+    padding: 10px; /* Espacio alrededor del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño del texto */
+    z-index: 1000; /* Asegurarse de que aparezca por encima de otros elementos */
+    max-width: 300px; /* Limitar el ancho del cuadro de descripción */
+    max-height: 400px;
+}
+
+/* Alinear las descripciones en diferentes posiciones según las necesidades */
+#description1 {
+    top: 10px;
+    left: 10px;
+}
+
+#description2 {
+    top: 10px;
+    right: 10px;
+}
+
+#description3 {
+    top: 10px;
+    left: 10px;
+}
+
+#description4 {
+    top: 10px;
+    left: 10px;
+}
+
+/* Estilo para la imagen para asegurar que esté bien posicionada */
+.img-magnifier-container img {
+    width: 801px; /* Ancho fijo */
+    height: 607px; /* Alto fijo */
+    object-fit: cover; /* Mantener la imagen dentro de estas dimensiones */
+}
+
+/* Hacer que la última descripción use dos columnas con flexbox */
+.description-columns {
+    display: flex; /* Crear un layout flexible */
+    gap: 20px; /* Espaciado entre columnas */
+}
+
+/* Estilos para las columnas */
+.column {
+    flex: 1; /* Hacer que cada columna ocupe el mismo espacio */
+    padding: 10px;
+}

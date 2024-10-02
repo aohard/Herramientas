@@ -22,11 +22,28 @@ function showDescription(e) {
         descriptionElement = document.getElementById("description4");
     }
 
-    // Si se ha detectado una descripción, se muestra justo arriba del mouse
+    // Si se ha detectado una descripción, ajusta la posición
     if (descriptionElement) {
         descriptionElement.style.display = "block";
-        descriptionElement.style.left = (x + 10) + "px";  // Ajuste de 10px para que no quede justo sobre el puntero
-        descriptionElement.style.top = (y - descriptionElement.offsetHeight - 10) + "px";   // Ajuste para mostrar por encima del puntero
+        let descriptionHeight = descriptionElement.offsetHeight;
+        let descriptionWidth = descriptionElement.offsetWidth;
+
+        // Posición a la derecha del cursor
+        let posX = x + 10;
+
+        // Posición arriba del cursor
+        let posY = y - descriptionHeight - 10;
+
+        // Asegurarse de que la descripción no salga del área visible
+        if (posY < 0) { // Si se va demasiado arriba
+            posY = y + 10; // Colocarla abajo del cursor en su lugar
+        }
+        if (posX + descriptionWidth > window.innerWidth) { // Si se va demasiado a la derecha
+            posX = x - descriptionWidth - 10; // Colocarla a la izquierda del cursor
+        }
+
+        descriptionElement.style.left = posX + "px";  // Posicionar horizontalmente
+        descriptionElement.style.top = posY + "px";   // Posicionar verticalmente
     }
 }
 

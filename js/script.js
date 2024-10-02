@@ -22,11 +22,11 @@ function showDescription(e) {
         descriptionElement = document.getElementById("description4");
     }
 
-    // Si se ha detectado una descripción, se muestra justo debajo del mouse
+    // Si se ha detectado una descripción, se muestra justo arriba del mouse
     if (descriptionElement) {
         descriptionElement.style.display = "block";
-        descriptionElement.style.left = (x + 10) + "px";  // Ajuste de 10px para que no quede justo bajo el puntero
-        descriptionElement.style.top = (y + 10) + "px";   // Ajuste de 10px para separar el texto del puntero
+        descriptionElement.style.left = (x + 10) + "px";  // Ajuste de 10px para que no quede justo sobre el puntero
+        descriptionElement.style.top = (y - descriptionElement.offsetHeight - 10) + "px";   // Ajuste para mostrar por encima del puntero
     }
 }
 

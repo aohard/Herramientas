@@ -42,9 +42,9 @@
 
 /* Estilo para la imagen para asegurar que esté bien posicionada */
 .img-magnifier-container img {
-    width: 801px; /* Ancho fijo */
-    height: 607px; /* Alto fijo */
-    object-fit: cover; /* Mantener la imagen dentro de estas dimensiones */
+    width: 700px; /* Ancho fijo */
+    height: 550px; /* Alto fijo */
+    object-fit: auto; /* Mantener la imagen dentro de estas dimensiones */
 }
 
 /* Flexbox para organizar las columnas dentro de #description3 */

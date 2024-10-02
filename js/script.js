@@ -12,13 +12,13 @@ function showDescription(e) {
     // Mostrar la descripción correspondiente según la posición del cursor
     let descriptionElement = null;
 
-    if (e.offsetX > 214 && e.offsetX < 469 && e.offsetY > 0 && e.offsetY < 210) {
+    if (e.offsetX > 214 && e.offsetX < 469 && e.offsetY > 0 && e.offsetY < 145) {
         descriptionElement = document.getElementById("description1");
-    } else if (e.offsetX > 0 && e.offsetX < 219 && e.offsetY > 200 && e.offsetY < 410) {
+    } else if (e.offsetX > 0 && e.offsetX < 200 && e.offsetY > 145 && e.offsetY < 350) {
         descriptionElement = document.getElementById("description2");
-    } else if (e.offsetX > 507 && e.offsetX < 800 && e.offsetY > 131 && e.offsetY < 422) {
+    } else if (e.offsetX > 450 && e.offsetX < 650 && e.offsetY > 125 && e.offsetY < 350) {
         descriptionElement = document.getElementById("description3");
-    } else if (e.offsetX > 247 && e.offsetX < 454 && e.offsetY > 403 && e.offsetY < 605) {
+    } else if (e.offsetX > 170 && e.offsetX < 350 && e.offsetY > 350 && e.offsetY < 500) {
         descriptionElement = document.getElementById("description4");
     }
 

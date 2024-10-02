@@ -42,8 +42,8 @@
 
 /* Estilo para la imagen para asegurar que esté bien posicionada */
 .img-magnifier-container img {
-    width: 700px; /* Ancho fijo */
-    height: 550px; /* Alto fijo */
+    width: 650px; /* Ancho fijo */
+    height: 500px; /* Alto fijo */
     object-fit: auto; /* Mantener la imagen dentro de estas dimensiones */
 }
 

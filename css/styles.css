@@ -6,8 +6,8 @@ body {
     height: 100vh; /* 100% de la altura de la ventana */
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     background-color: #f4f4f4;
 }
 
@@ -15,8 +15,8 @@ body {
 .container {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: 100%;
     height: 100%; /* 100% de la altura disponible */
     padding: 20px;
@@ -28,7 +28,7 @@ body {
 /* Asegura que el contenedor de la imagen también sea responsivo en altura */
 .img-magnifier-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 50%; /* Ocupa el 50% del ancho en pantallas grandes */
     height: 100%; /* Toma la altura disponible */
@@ -58,7 +58,7 @@ body {
 
 /* H1 dentro de las descripciones */
 h1 {
-    font-size: 10px;
+    font-size: 15px;
     margin: 0;
     color: white;
 }
@@ -67,7 +67,7 @@ h1 {
 @media (min-width: 768px) {
     .container {
         height: 100vh;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 
     .img-magnifier-container {
@@ -79,7 +79,7 @@ h1 {
 /* Estilos responsivos para pantallas medianas */
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
+        flex-direction: flex-start;
     }
 
     .img-magnifier-container {
@@ -90,7 +90,7 @@ h1 {
 /* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 480px) {
     .container {
-        flex-direction: column;
+        flex-direction: flex-start;
     }
 
     .img-magnifier-container {

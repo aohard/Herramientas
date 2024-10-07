@@ -1,54 +1,61 @@
-// Detectar el movimiento del mouse sobre la imagen
-document.getElementById("imagen").addEventListener("mousemove", showDescription);
+function magnify(imgID) {
+    let img;
+    img = document.getElementById(imgID);
 
-function showDescription(e) {
-    let x = e.pageX; // Obtener la posición X del mouse respecto al documento
-    let y = e.pageY; // Obtener la posición Y del mouse respecto al documento
+    // Eventos para mover el mouse
+    img.addEventListener("mousemove", moveDescription);
+    img.addEventListener("touchmove", moveDescription);
 
-    // Ocultar todas las descripciones
-    const descriptions = document.querySelectorAll('.description');
-    descriptions.forEach(desc => desc.style.display = 'none');
+    function moveDescription(e) {
+        let pos, x, y;
+        e.preventDefault();
 
-    // Mostrar la descripción correspondiente según la posición del cursor
-    let descriptionElement = null;
+        // Obtener la posición del puntero dentro de la imagen
+        pos = getCursorPos(e);
 
-    if (e.offsetX > 214 && e.offsetX < 469 && e.offsetY > 0 && e.offsetY < 145) {
-        descriptionElement = document.getElementById("description1");
-    } else if (e.offsetX > 0 && e.offsetX < 200 && e.offsetY > 145 && e.offsetY < 350) {
-        descriptionElement = document.getElementById("description2");
-    } else if (e.offsetX > 450 && e.offsetX < 650 && e.offsetY > 125 && e.offsetY < 350) {
-        descriptionElement = document.getElementById("description3");
-    } else if (e.offsetX > 170 && e.offsetX < 350 && e.offsetY > 350 && e.offsetY < 500) {
-        descriptionElement = document.getElementById("description4");
+        // Obtener la posición del cursor en la ventana
+        x = e.clientX;
+        y = e.clientY;
+
+        // Mostrar la descripción correspondiente
+        showDescription(pos.x / img.width, pos.y / img.height, x, y); // Pasar las coordenadas del mouse y el tamaño relativo
     }
 
-    // Si se ha detectado una descripción, ajusta la posición
-    if (descriptionElement) {
-        descriptionElement.style.display = "block";
-        let descriptionHeight = descriptionElement.offsetHeight;
-        let descriptionWidth = descriptionElement.offsetWidth;
+    function getCursorPos(e) {
+        let a, x = 0, y = 0;
+        e = e || window.event;
+        a = img.getBoundingClientRect();
+        x = e.pageX - a.left;
+        y = e.pageY - a.top;
+        return { x: x, y: y };
+    }
 
-        // Posición a la derecha del cursor
-        let posX = x + 10;
+    // Mostrar la descripción basada en la posición
+    function showDescription(xPercent, yPercent, mouseX, mouseY) {
+        // Ocultar todas las descripciones
+        const descriptions = document.querySelectorAll('.description');
+        descriptions.forEach(desc => desc.style.display = 'none');
 
-        // Posición arriba del cursor
-        let posY = y - descriptionHeight - 10;
-
-        // Asegurarse de que la descripción no salga del área visible
-        if (posY < 0) { // Si se va demasiado arriba
-            posY = y + 10; // Colocarla abajo del cursor en su lugar
+        let description;
+        // Determinar cuál descripción mostrar
+        if (xPercent > 0.3 && xPercent < 0.6 && yPercent > 0 && yPercent < 0.30) {
+            description = document.getElementById("description1");
+        } else if (xPercent > 0 && xPercent < 0.25 && yPercent > 0.33 && yPercent < 0.7) {
+            description = document.getElementById("description2");
+        } else if (xPercent > 0.55 && xPercent < 1 && yPercent > 0.25 && yPercent < 0.7) {
+            description = document.getElementById("description3");
+        } else if (xPercent > 0.3 && xPercent < 0.6 && yPercent > 0.7 && yPercent < 0.95) {
+            description = document.getElementById("description4");
         }
-        if (posX + descriptionWidth > window.innerWidth) { // Si se va demasiado a la derecha
-            posX = x - descriptionWidth - 10; // Colocarla a la izquierda del cursor
-        }
 
-        descriptionElement.style.left = posX + "px";  // Posicionar horizontalmente
-        descriptionElement.style.top = posY + "px";   // Posicionar verticalmente
+        if (description) {
+            description.style.display = 'block';
+            // Posicionar la descripción cerca del mouse
+            description.style.position = 'absolute';
+            description.style.left = (mouseX + 15) + 'px'; // Mover ligeramente a la derecha del cursor
+            description.style.top = (mouseY - 10) + 'px';  // Mover ligeramente arriba del cursor
+        }
     }
 }
 
-// Al mover el mouse fuera de la imagen, ocultar todas las descripciones
-document.getElementById("imagen").addEventListener("mouseleave", () => {
-    const descriptions = document.querySelectorAll('.description');
-    descriptions.forEach(desc => desc.style.display = 'none');
-});
+magnify("imagen");
